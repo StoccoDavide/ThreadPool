@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>ThreadPool: ThreadPool::Options Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/StoccoDavide/Sturm" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ThreadPool
+   &#160;<span id="projectnumber">0.0.0</span>
+   </div>
+   <div id="projectbrief">A simple thread pool library in C++17</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_thread_pool_1_1_options.html','','class_thread_pool_1_1_options-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ThreadPool::Options Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Option base class for parallel algorithms.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_thread_pool_8hh_source.html">ThreadPool.hh</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aa3043de6ad2757c1738a1fab9f1423dd" id="r_aa3043de6ad2757c1738a1fab9f1423dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">: Integer { <a class="el" href="#aa3043de6ad2757c1738a1fab9f1423ddab529f649afedc0eaafcee4b2751da03a">NONE</a> = 0
+, <a class="el" href="#aa3043de6ad2757c1738a1fab9f1423dda9a1e8253917d22ce198fb8b96f354ae8">AUTO</a> = -1
+, <a class="el" href="#aa3043de6ad2757c1738a1fab9f1423dda0a78774af46b6c22b071e1893e211192">NICE</a> = -2
+ }</td></tr>
+<tr class="memdesc:aa3043de6ad2757c1738a1fab9f1423dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constants for specifying the number of threads.  <a href="#aa3043de6ad2757c1738a1fab9f1423dd">More...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af2e722dbf00793f41244c5da56d4e4aa" id="r_af2e722dbf00793f41244c5da56d4e4aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2e722dbf00793f41244c5da56d4e4aa">Options</a> ()</td></tr>
+<tr class="memdesc:af2e722dbf00793f41244c5da56d4e4aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
+<tr class="memitem:a9e4fcf15bce16d0340cd71d0e2ed7c67" id="r_a9e4fcf15bce16d0340cd71d0e2ed7c67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_thread_pool_1_1_options.html">Options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e4fcf15bce16d0340cd71d0e2ed7c67">nthreads</a> (const <a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a> n=<a class="el" href="#aa3043de6ad2757c1738a1fab9f1423dda9a1e8253917d22ce198fb8b96f354ae8">AUTO</a>)</td></tr>
+<tr class="memdesc:a9e4fcf15bce16d0340cd71d0e2ed7c67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of threads or one of the constants <span class="tt">AUTO</span>, <span class="tt">NICE</span> and <span class="tt">NONE</span>.  <br /></td></tr>
+<tr class="memitem:ac0046d290eca90cfe0952d0e6c08a41f" id="r_ac0046d290eca90cfe0952d0e6c08a41f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0046d290eca90cfe0952d0e6c08a41f">get_nthreads</a> () const</td></tr>
+<tr class="memdesc:ac0046d290eca90cfe0952d0e6c08a41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get desired number of threads.  <br /></td></tr>
+<tr class="memitem:a327fa4cea5d93f8daa57bf01ebdefa54" id="r_a327fa4cea5d93f8daa57bf01ebdefa54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a327fa4cea5d93f8daa57bf01ebdefa54">get_actual_nthreads</a> () const</td></tr>
+<tr class="memdesc:a327fa4cea5d93f8daa57bf01ebdefa54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get desired number of threads. In contrast to <span class="tt"><a class="el" href="#ac0046d290eca90cfe0952d0e6c08a41f" title="Get desired number of threads.">get_nthreads()</a></span>, this will always return a value <span class="tt">&gt;= 1</span>.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a747ba3569dbe55135c4d604400278701" id="r_a747ba3569dbe55135c4d604400278701"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a747ba3569dbe55135c4d604400278701">actual_nthreads</a> (const <a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a> user_num_threads)</td></tr>
+<tr class="memdesc:a747ba3569dbe55135c4d604400278701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to compute the actual number of threads.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a36a8182e428d08fbc3df8d19d94a6ddb" id="r_a36a8182e428d08fbc3df8d19d94a6ddb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36a8182e428d08fbc3df8d19d94a6ddb">m_nthreads</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class allows users to specify the number of threads to be used in parallel algorithms. </p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
+<a id="aa3043de6ad2757c1738a1fab9f1423dd" name="aa3043de6ad2757c1738a1fab9f1423dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3043de6ad2757c1738a1fab9f1423dd">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum : <a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>These constants can be used to specify the number of threads in parallel algorithms. </p>
+<table class="fieldtable">
+<tr><th colspan="3">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3043de6ad2757c1738a1fab9f1423ddab529f649afedc0eaafcee4b2751da03a" name="aa3043de6ad2757c1738a1fab9f1423ddab529f649afedc0eaafcee4b2751da03a"></a>NONE&#160;</td><td class="fieldinit">0&#160;</td><td class="fielddoc"><p>Disable multi-threading, executing tasks sequentially. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa3043de6ad2757c1738a1fab9f1423dda9a1e8253917d22ce198fb8b96f354ae8" name="aa3043de6ad2757c1738a1fab9f1423dda9a1e8253917d22ce198fb8b96f354ae8"></a>AUTO&#160;</td><td class="fieldinit">-1&#160;</td><td class="fielddoc"><p>Automatically determine the number of threads based on the system's hardware concurrency. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa3043de6ad2757c1738a1fab9f1423dda0a78774af46b6c22b071e1893e211192" name="aa3043de6ad2757c1738a1fab9f1423dda0a78774af46b6c22b071e1893e211192"></a>NICE&#160;</td><td class="fieldinit">-2&#160;</td><td class="fielddoc"><p>Use half as many threads as <span class="tt">AUTO</span> would. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af2e722dbf00793f41244c5da56d4e4aa" name="af2e722dbf00793f41244c5da56d4e4aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2e722dbf00793f41244c5da56d4e4aa">&#9670;&#160;</a></span>Options()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadPool::Options::Options </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initializes the <a class="el" href="class_thread_pool_1_1_options.html" title="Option base class for parallel algorithms.">Options</a> object with the default number of threads, which is determined by <span class="tt">actual_nthreads(AUTO)</span>. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a747ba3569dbe55135c4d604400278701" name="a747ba3569dbe55135c4d604400278701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a747ba3569dbe55135c4d604400278701">&#9670;&#160;</a></span>actual_nthreads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a> ThreadPool::Options::actual_nthreads </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a></td>          <td class="paramname"><span class="paramname"><em>user_num_threads</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This function interprets the user-specified number of threads and returns the actual number of threads to be used. If the preprocessor flag <span class="tt">THREADPOOL_SINGLE_THREADED</span> is defined, it always returns 0, indicating that multi-threading is disabled. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">user_num_threads</td><td>The user-specified number of threads. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The actual number of threads to be used. </dd></dl>
+
+</div>
+</div>
+<a id="a327fa4cea5d93f8daa57bf01ebdefa54" name="a327fa4cea5d93f8daa57bf01ebdefa54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a327fa4cea5d93f8daa57bf01ebdefa54">&#9670;&#160;</a></span>get_actual_nthreads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a> ThreadPool::Options::get_actual_nthreads </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0046d290eca90cfe0952d0e6c08a41f" name="ac0046d290eca90cfe0952d0e6c08a41f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0046d290eca90cfe0952d0e6c08a41f">&#9670;&#160;</a></span>get_nthreads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a> ThreadPool::Options::get_nthreads </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>This function may return 0, which means that multi-threading shall be switched off entirely. If an algorithm receives this value, it should revert to a sequential implementation. In contrast, if <span class="tt"><a class="el" href="#ac0046d290eca90cfe0952d0e6c08a41f" title="Get desired number of threads.">get_nthreads()</a> == 1</span>, the parallel algorithm version shall be executed with a single thread. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The desired number of threads. </dd></dl>
+
+</div>
+</div>
+<a id="a9e4fcf15bce16d0340cd71d0e2ed7c67" name="a9e4fcf15bce16d0340cd71d0e2ed7c67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e4fcf15bce16d0340cd71d0e2ed7c67">&#9670;&#160;</a></span>nthreads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_thread_pool_1_1_options.html">Options</a> &amp; ThreadPool::Options::nthreads </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#aa3043de6ad2757c1738a1fab9f1423dda9a1e8253917d22ce198fb8b96f354ae8">AUTO</a></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>This setting is ignored if the preprocessor flag <span class="tt">THREADPOOL_SINGLE_THREADED</span> is defined. Then, the number of threads is set to 0 and all tasks revert to sequential algorithm implementations. The same can be achieved at runtime by passing <span class="tt">n = 0</span>. In contrast, passing <span class="tt">n = 1</span> causes the parallel algorithm versions to be executed with a single thread. Both possibilities are mainly useful for debugging. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The desired number of threads. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_thread_pool_1_1_options.html" title="Option base class for parallel algorithms.">Options</a> object, allowing for method chaining. </dd></dl>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a36a8182e428d08fbc3df8d19d94a6ddb" name="a36a8182e428d08fbc3df8d19d94a6ddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36a8182e428d08fbc3df8d19d94a6ddb">&#9670;&#160;</a></span>m_nthreads</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_thread_pool.html#a1fe5c52acac002d9235b11efe171f6ad">Integer</a> ThreadPool::Options::m_nthreads</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The number of threads to be used in parallel algorithms. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>include/<a class="el" href="_thread_pool_8hh_source.html">ThreadPool.hh</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_thread_pool.html">ThreadPool</a></li><li class="navelem"><a href="class_thread_pool_1_1_options.html">Options</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

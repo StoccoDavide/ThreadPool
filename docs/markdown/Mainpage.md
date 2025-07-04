@@ -2,8 +2,6 @@
 
 `ThreadPool` is a simple thread pool library written in C++17 that allows you to run tasks concurrently using a pool of worker threads. It is designed to be easy to use, efficient, and flexible, making it suitable for a wide range of applications. The library provides a simple interface for submitting tasks and managing the thread pool, while handling the complexities of thread management internally.
 
-Are you looking for the online documentation? Visit [this link](https://stoccodavide.github.io/ThreadPool/)!
-
 ## Installation
 
 ### Quick and dirty

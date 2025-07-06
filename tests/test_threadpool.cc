@@ -14,6 +14,7 @@
 
 // The ThreadPool includes
 #include "ThreadPool.hh"
+#include "ThreadPool/ParallelFor.hh"
 
 using namespace ThreadPool;
 

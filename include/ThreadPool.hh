@@ -6,8 +6,10 @@
  * Davide Stocco                   University of Trento                   davide.stocco@unitn.it *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef THREADPOOL_THREADPOOL_HH
-#define THREADPOOL_THREADPOOL_HH
+#pragma once
+
+#ifndef INCLUDE_THREADPOOL_HH
+#define INCLUDE_THREADPOOL_HH
 
 // Standard library includes
 #include <algorithm>
@@ -175,12 +177,10 @@ namespace ThreadPool {
       this->m_processed.store(0);
 
       const size_t actual_nthreads = options.get_nthreads();
-      for(size_t i{0}; i < actual_nthreads; ++i)
-      {
+      for (size_t i{0}; i < actual_nthreads; ++i) {
         this->m_workers.emplace_back(
           [i, this] {
-            for(;;)
-            {
+            for (;;) {
               std::function<void(Integer)> task;
               {
                 std::unique_lock<std::mutex> lock(this->m_queue_mutex);
@@ -224,14 +224,14 @@ namespace ThreadPool {
     Manager(const Options & options) : m_stop(false) {this->init(options);}
 
     /**
-     * \brief Create a thread pool with <tt>n<\tt> threads.
+     * \brief Create a thread pool with <tt>n</tt> threads.
      * \param[in] n The number of threads to be used in parallel algorithms.
-     * \note If <tt>n<\tt> is <tt>Options::AUTO</tt>, the number of threads is determined by
+     * \note If <tt>n</tt> is <tt>Options::AUTO</tt>, the number of threads is determined by
      * <tt>std::thread::hardware_concurrency()</tt>. <tt>Options::NICE</tt> will create half as many
      * threads. If <tt>n = 0</tt>, no workers are started, and all tasks will be executed synchronously
      * in the present thread. If the preprocessor flag <tt>THREADPOOL_SINGLE_THREADED</tt> is defined,
      * the number of threads is always set to zero (i.e. synchronous execution), regardless of the
-     * value of <tt>n<\tt>. This is useful for debugging.
+     * value of <tt>n</tt>. This is useful for debugging.
      */
     Manager(const Integer n) : m_stop(false) {this->init(Options().nthreads(n));}
 
@@ -244,7 +244,7 @@ namespace ThreadPool {
         this->m_stop = true;
       }
       this->m_worker_condition.notify_all();
-      for(std::thread & worker: this->m_workers) {worker.join();}
+      for (std::thread & worker: this->m_workers) {worker.join();}
     }
 
     /**
@@ -264,7 +264,7 @@ namespace ThreadPool {
       typedef std::packaged_task<result_type(Integer)> PackageType;
       auto task = std::make_shared<PackageType>(function);
       auto res = task->get_future();
-      if (this->m_workers.size() > 0){
+      if (this->m_workers.size() > 0) {
         {
           std::unique_lock<std::mutex> lock(this->m_queue_mutex);
           THREADPOOL_ASSERT(!this->m_stop, CMD "enqueue on stopped thread pool.");
@@ -295,7 +295,7 @@ namespace ThreadPool {
       typedef std::packaged_task<void(Integer)> PackageType;
       auto task = std::make_shared<PackageType>(function);
       auto res = task->get_future();
-      if (this->m_workers.size() > 0){
+      if (this->m_workers.size() > 0) {
         {
           std::unique_lock<std::mutex> lock(this->m_queue_mutex);
           THREADPOOL_ASSERT(!this->m_stop, CMD "enqueue on stopped thread pool.");
@@ -329,4 +329,4 @@ namespace ThreadPool {
 
 } // namespace ThreadPool
 
-#endif // THREADPOOL_THREADPOOL_HH
+#endif // INCLUDE_THREADPOOL_HH

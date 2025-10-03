@@ -6,6 +6,8 @@
  * Davide Stocco                   University of Trento                   davide.stocco@unitn.it *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#pragma once
+
 #ifndef THREADPOOL_PARALLELFOR_HH
 #define THREADPOOL_PARALLELFOR_HH
 
@@ -17,7 +19,6 @@ namespace ThreadPool {
   /**
    * \brief Apply a functor to all items in a range in parallel.
    * \param[in] pool The thread pool to use for parallel execution.
-   * \param[in] nitems The number of items in the range.
    * \param[in] iter The beginning of the range.
    * \param[in] end The end of the range.
    * \param[in] function The functor to apply to each item in the range.
@@ -38,14 +39,13 @@ namespace ThreadPool {
     const std::ptrdiff_t chunkedWorkPerThread = std::max<std::ptrdiff_t>(std::llround(workPerThread/3.0), 1);
 
     std::vector<std::future<void>> futures;
-    for( ;iter<end; iter+=chunkedWorkPerThread)
-    {
+    for (; iter<end; iter+=chunkedWorkPerThread) {
       const size_t lc = std::min(workload, chunkedWorkPerThread);
       workload -= lc;
       futures.emplace_back(
         pool.enqueue(
           [&function, iter, lc] (Integer id) {
-            for(size_t i{0}; i<lc; ++i) {function(id, iter[i]);}
+            for (size_t i{0}; i < lc; ++i) {function(id, iter[i]);}
           }
         )
       );
@@ -67,41 +67,39 @@ namespace ThreadPool {
   inline void parallel_foreach_impl(Manager & pool, const std::ptrdiff_t nitems, Iterator iter,
     Iterator end, Function && function, std::forward_iterator_tag)
   {
-      if (nitems == 0) {nitems = std::distance(iter, end);}
+    if (nitems == 0) {nitems = std::distance(iter, end);}
 
-      std::ptrdiff_t workload = nitems;
-      const float workPerThread = float(workload)/pool.nthreads();
-      const std::ptrdiff_t chunkedWorkPerThread = std::max<std::ptrdiff_t>(std::llround(workPerThread/3.0), 1);
+    std::ptrdiff_t workload = nitems;
+    const float workPerThread = float(workload)/pool.nthreads();
+    const std::ptrdiff_t chunkedWorkPerThread = std::max<std::ptrdiff_t>(std::llround(workPerThread/3.0), 1);
 
-      std::vector<std::future<void>> futures;
-      for(;;)
-      {
-        const size_t lc = std::min(chunkedWorkPerThread, workload);
-        workload -= lc;
-        futures.emplace_back(
-            pool.enqueue(
-              [&function, iter, lc] (Integer id)
-              {
-                auto iterCopy = iter;
-                for(size_t i{0}; i<lc; ++i){
-                    function(id, *iterCopy);
-                    ++iterCopy;
-                }
+    std::vector<std::future<void>> futures;
+    for (;;) {
+      const size_t lc = std::min(chunkedWorkPerThread, workload);
+      workload -= lc;
+      futures.emplace_back(
+          pool.enqueue(
+            [&function, iter, lc] (Integer id)
+            {
+              auto iterCopy = iter;
+              for (size_t i{0}; i<lc; ++i) {
+                  function(id, *iterCopy);
+                  ++iterCopy;
               }
-            )
-        );
-        for (size_t i{0}; i < lc; ++i)
+            }
+          )
+      );
+      for (size_t i{0}; i < lc; ++i) {
+        ++iter;
+        if (iter == end)
         {
-          ++iter;
-          if (iter == end)
-          {
-            assert(workload == 0);
-            break;
-          }
+          assert(workload == 0);
+          break;
         }
-        if (workload == 0) {break;}
       }
-      for (auto & future : futures) {future.get();}
+      if (workload == 0) {break;}
+    }
+    for (auto & future : futures) {future.get();}
   }
 
   /**
@@ -118,13 +116,12 @@ namespace ThreadPool {
   template<class Iteration, class Function>
   inline void parallel_foreach_impl(Manager & pool, [[maybe_unused]] std::ptrdiff_t nitems,
       Iteration iter, Iteration end, Function && function, std::input_iterator_tag)
-    {
+  {
     [[maybe_unused]] std::ptrdiff_t num_items = 0;
     std::vector<std::future<void>> futures;
-    for (; iter != end; ++iter)
-    {
+    for (; iter != end; ++iter) {
       auto item = *iter;
-      futures.emplace_back(pool.enqueue([&function, &item](Integer id){function(id, item);}));
+      futures.emplace_back(pool.enqueue([&function, &item] (Integer id) {function(id, item);}));
       ++num_items;
     }
     assert(num_items == nitems || nitems == 0);
@@ -148,8 +145,7 @@ namespace ThreadPool {
     [[maybe_unused]] const std::ptrdiff_t nitems = 0)
   {
     [[maybe_unused]] std::ptrdiff_t n = 0;
-    for (; begin != end; ++begin)
-    {
+    for (; begin != end; ++begin) {
       function(0, *begin);
       ++n;
     }

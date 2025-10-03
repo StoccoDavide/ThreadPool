@@ -56,8 +56,6 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
   endif()
 
   option(THREADPOOL_BUILD_TESTS "Build tests" OFF)
-  option(THREADPOOL_BUILD_BENCHMARKS "Build benchmarks" OFF)
-  option(THREADPOOL_BUILD_EXAMPLES "Build examples" OFF)
 
   file(GLOB_RECURSE HEADER_FILES_HH "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hh")
   foreach(HEADER_FILE IN LISTS HEADER_FILES_HH)
@@ -72,18 +70,6 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
   if(THREADPOOL_BUILD_TESTS)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
-  endif()
-
-  if(THREADPOOL_BUILD_BENCHMARKS)
-    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/benchmarks)
-  endif()
-
-  if(THREADPOOL_BUILD_EXAMPLES)
-    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/examples)
-  endif()
-
-  if(THREADPOOL_ENABLE_PLOTTING)
-    target_compile_definitions(ThreadPool INTERFACE THREADPOOL_ENABLE_PLOTTING)
   endif()
 endif()
 

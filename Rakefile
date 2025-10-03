@@ -16,10 +16,8 @@
 end
 
 # Configuration of the build
-BUILD_DEBUG                 = false
-THREADPOOL_BUILD_TESTS      = true
-THREADPOOL_BUILD_EXAMPLES   = false
-THREADPOOL_BUILD_BENCHMARKS = false
+BUILD_DEBUG            = false
+THREADPOOL_BUILD_TESTS = true
 
 case RUBY_PLATFORM
 when /mingw|mswin/
@@ -54,16 +52,6 @@ if THREADPOOL_BUILD_TESTS then
   cmd_cmake_build += "-DTHREADPOOL_BUILD_TESTS:VAR=true "
 else
   cmd_cmake_build += "-DTHREADPOOL_BUILD_TESTS:VAR=false "
-end
-if THREADPOOL_BUILD_EXAMPLES then
-  cmd_cmake_build += "-DTHREADPOOL_BUILD_EXAMPLES:VAR=true "
-else
-  cmd_cmake_build += "-DTHREADPOOL_BUILD_EXAMPLES:VAR=false "
-end
-if THREADPOOL_BUILD_BENCHMARKS then
-  cmd_cmake_build += "-DTHREADPOOL_BUILD_BENCHMARKS:VAR=true "
-else
-  cmd_cmake_build += "-DTHREADPOOL_BUILD_BENCHMARKS:VAR=false "
 end
 if BUILD_DEBUG then
   cmd_cmake_build += "-DCMAKE_BUILD_TYPE:VAR=Debug "

@@ -98,7 +98,7 @@ install(EXPORT ThreadPoolTargets
 )
 
 configure_package_config_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/ThreadPoolConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/ThreadPoolConfig.cmake
   INSTALL_DESTINATION lib/cmake/ThreadPool
 )

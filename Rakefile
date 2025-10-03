@@ -16,8 +16,8 @@
 end
 
 # Configuration of the build
-BUILD_DEBUG            = false
-THREADPOOL_BUILD_TESTS = true
+BUILD_DEBUG = false
+BUILD_TESTS = true
 
 case RUBY_PLATFORM
 when /mingw|mswin/
@@ -48,7 +48,7 @@ else
 end
 
 cmd_cmake_build = "-G Ninja "
-if THREADPOOL_BUILD_TESTS then
+if BUILD_TESTS then
   cmd_cmake_build += "-DTHREADPOOL_BUILD_TESTS:VAR=true "
 else
   cmd_cmake_build += "-DTHREADPOOL_BUILD_TESTS:VAR=false "
